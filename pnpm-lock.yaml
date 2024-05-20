@@ -83,6 +83,9 @@ dependencies:
   next-themes:
     specifier: ^0.3.0
     version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
+  ollama-ai-provider:
+    specifier: ^0.7.0
+    version: 0.7.0(zod@3.23.8)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -4057,6 +4060,21 @@ packages:
       es-object-atoms: 1.0.0
     dev: true
 
+  /ollama-ai-provider@0.7.0(zod@3.23.8):
+    resolution: {integrity: sha512-mw2NusrPkBJ7OxBLdRNNIVbXKtil//mj/7n393+9kj74gT6EKzyjf+j2v9AvFi0fJwnuW1YxnJpbuw1UjfdPRQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 0.0.5
+      '@ai-sdk/provider-utils': 0.0.8(zod@3.23.8)
+      partial-json: 0.1.7
+      zod: 3.23.8
+    dev: false
+
   /once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -4113,6 +4131,10 @@ packages:
     resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
     dependencies:
       entities: 4.5.0
+    dev: false
+
+  /partial-json@0.1.7:
+    resolution: {integrity: sha512-Njv/59hHaokb/hRUjce3Hdv12wd60MtM9Z5Olmn+nehe0QDAsRtRbJPvJ0Z91TusF0SuZRIvnM+S4l6EIP8leA==}
     dev: false
 
   /path-exists@4.0.0:
