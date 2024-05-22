@@ -108,7 +108,7 @@ async function exaSearch(query: string, maxResults: number = 10): Promise<any> {
 }
 
 async function searxngSearch(query: string, maxResults: number = 10): Promise<any> {
-  const response = await fetch(`http://47.88.7.75:8008/search?q=${query}&format=json&count=${maxResults < 5 ? 5 : maxResults}&page=1`, {
+  const response = await fetch(`http://47.88.7.75:8008/search?q=${query}&format=json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -119,6 +119,6 @@ async function searxngSearch(query: string, maxResults: number = 10): Promise<an
     throw new Error(`Error: ${response.status}`)
   }
 
-  const data = await response.json()
-  return data
+  const data = await response.json();
+  return data.results.slice(0, maxResults)
 }
