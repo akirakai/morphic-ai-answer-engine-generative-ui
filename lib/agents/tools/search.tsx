@@ -45,7 +45,9 @@ export const searchTool = ({
         //   searchResult = await exaSearch(query)
         //   break;
         case 'searxng':
+          console.log('before call searxng');
           searchResult = await searxngSearch(query, max_results)
+          console.log('after call searxng');
           break;
       }
     } catch (error) {
