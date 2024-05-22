@@ -35,12 +35,19 @@ export const searchTool = ({
     const filledQuery =
       query.length < 5 ? query + ' '.repeat(5 - query.length) : query
     let searchResult
-    const searchAPI: 'tavily' | 'exa' = 'tavily'
+    const searchAPI: 'tavily' | 'exa' | 'searxng' = 'searxng'
     try {
-      searchResult =
-        searchAPI === 'tavily'
-          ? await tavilySearch(filledQuery, max_results, search_depth)
-          : await exaSearch(query)
+      switch (searchAPI) {
+        // case 'tavily':
+        //   searchResult = await tavilySearch(filledQuery, max_results, search_depth)
+        //   break;
+        // case 'exa':
+        //   searchResult = await exaSearch(query)
+        //   break;
+        case 'searxng':
+          searchResult = await searxngSearch(query, max_results)
+          break;
+      }
     } catch (error) {
       console.error('Search API error:', error)
       hasError = true
@@ -98,4 +105,20 @@ async function exaSearch(query: string, maxResults: number = 10): Promise<any> {
     highlights: true,
     numResults: maxResults
   })
+}
+
+async function searxngSearch(query: string, maxResults: number = 10): Promise<any> {
+  const response = await fetch(`http://47.88.7.75:8008/search?q=${query}&format=json&count=${maxResults < 5 ? 5 : maxResults}&page=1`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`)
+  }
+
+  const data = await response.json()
+  return data
 }
