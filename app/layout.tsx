@@ -13,7 +13,7 @@ const fontSans = FontSans({
   variable: '--font-sans'
 })
 
-const title = 'XAnswer'
+const title = 'X Answer'
 const description =
   'A fully open-source AI-powered answer engine with a generative UI.'
 
@@ -57,7 +57,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Sidebar />
-          <Footer />
+          {/* <Footer /> */}
           <Toaster />
         </ThemeProvider>
       </body>
