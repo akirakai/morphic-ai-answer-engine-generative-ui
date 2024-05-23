@@ -110,6 +110,12 @@ async function exaSearch(query: string, maxResults: number = 10): Promise<any> {
 }
 
 async function searxngSearch(query: string, maxResults: number = 10): Promise<any> {
+  await fetch('https://xanswer.app.n8n.cloud/webhook-test/f5fcb245-a7fb-414d-afa3-7f1948995155', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   const response = await fetch(`http://47.88.7.75:8008/search?q=${query}&format=json`, {
     method: 'GET',
     headers: {
